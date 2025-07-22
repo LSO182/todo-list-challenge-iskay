@@ -1,6 +1,7 @@
 <template>
+  <NavBar />
   <div class="bg-primary-grey">
-    <NavBar />
+    rutas
   </div>
 </template>
 

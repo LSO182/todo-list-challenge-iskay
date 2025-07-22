@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar bg-white pt-0">
+  <nav class="navbar bg-white py-0">
     <div class="nav-bar-menu-container d-flex align-items-center w-100">
-      <div class="container">
+      <div class="container mx-1">
         <div class="d-flex justify-content-between align-items-center">
           <img src="/src/assets/Menu.svg" alt="Menu logo" />
           <img
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex align-items-center overflow-auto shadow-sm">
+    <div class="d-flex align-items-center overflow-x-auto overflow-y-hidden shadow-sm">
       <ul
         class="nav nav-tabs d-flex flex-nowrap flex-md-wrap"
         id="tab-container"
@@ -22,7 +22,7 @@
       >
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link active"
+            class="nav-link text-grey-neutral-60 mx-3 active"
             id="tab-datos"
             data-bs-toggle="tab"
             data-bs-target="#tab-pane-datos"
@@ -37,7 +37,7 @@
 
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
+            class="nav-link text-grey-neutral-60 mx-3"
             id="tab-tareas"
             data-bs-toggle="tab"
             data-bs-target="#tab-pane-tareas"
@@ -52,7 +52,7 @@
 
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
+            class="nav-link text-grey-neutral-60 mx-3"
             id="tab-devoluciones"
             data-bs-toggle="tab"
             data-bs-target="#tab-pane-devoluciones"
@@ -67,7 +67,7 @@
 
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
+            class="nav-link text-grey-neutral-60 mx-3"
             id="tab-comunicaciones"
             data-bs-toggle="tab"
             data-bs-target="#tab-pane-comunicaciones"
@@ -82,7 +82,7 @@
 
         <li class="nav-item" role="presentation">
           <button
-            class="nav-link"
+            class="nav-link text-grey-neutral-60 mx-3"
             id="tab-amigos"
             data-bs-toggle="tab"
             data-bs-target="#tab-pane-amigos"
