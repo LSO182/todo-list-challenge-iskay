@@ -17,6 +17,10 @@
   color: var(--grey-neutral-60);
 }
 
+.fs-4-custom {
+  font-size: 20px;
+}
+
 /** nav-tabs **/
 
 .nav-bar-menu-container {
@@ -40,7 +44,6 @@
   border: transparent;
   flex-shrink: 0;
   min-width: 118px;
-  min-height: 50px;
 
   white-space: nowrap;
 }
@@ -55,4 +58,9 @@
   border-bottom: 4px solid var(--primary-green);
   color: var(--primary-green);
   font-weight: 700;
+}
+
+.home-container {
+  padding-bottom: 20px;
+  padding-top: 38px;
 }

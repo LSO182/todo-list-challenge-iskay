@@ -14,85 +14,27 @@
         </div>
       </div>
     </div>
-    <div class="d-flex align-items-center overflow-x-auto overflow-y-hidden shadow-sm">
-      <ul
-        class="nav nav-tabs d-flex flex-nowrap flex-md-wrap"
-        id="tab-container"
-        role="tablist"
-      >
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link text-grey-neutral-60 mx-3 active"
-            id="tab-datos"
-            data-bs-toggle="tab"
-            data-bs-target="#tab-pane-datos"
-            type="button"
-            role="tab"
-            aria-controls="tab-pane-datos"
-            aria-selected="true"
-          >
-            Mis datos
-          </button>
-        </li>
 
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link text-grey-neutral-60 mx-3"
-            id="tab-tareas"
-            data-bs-toggle="tab"
-            data-bs-target="#tab-pane-tareas"
-            type="button"
+    <div
+      class="d-flex align-items-center overflow-x-auto overflow-y-hidden shadow-sm"
+    >
+      <ul class="nav nav-tabs d-flex flex-nowrap flex-md-wrap" role="tablist">
+        <li
+          v-for="tab in navBarTabs"
+          :key="tab.id"
+          class="nav-item active"
+          role="presentation"
+        >
+          <router-link
+            class="nav-link text-center text-grey-neutral-60 mx-3"
+            :to="tab.route"
             role="tab"
-            aria-controls="tab-pane-tareas"
-            aria-selected="false"
+            :aria-label="`Ir a ${tab.label}`"
+            active-class="active"
+            exact-active-class="active"
           >
-            Mis tareas
-          </button>
-        </li>
-
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link text-grey-neutral-60 mx-3"
-            id="tab-devoluciones"
-            data-bs-toggle="tab"
-            data-bs-target="#tab-pane-devoluciones"
-            type="button"
-            role="tab"
-            aria-controls="tab-pane-devoluciones"
-            aria-selected="false"
-          >
-            Mis devoluciones
-          </button>
-        </li>
-
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link text-grey-neutral-60 mx-3"
-            id="tab-comunicaciones"
-            data-bs-toggle="tab"
-            data-bs-target="#tab-pane-comunicaciones"
-            type="button"
-            role="tab"
-            aria-controls="tab-pane-comunicaciones"
-            aria-selected="false"
-          >
-            Mis comunicaciones
-          </button>
-        </li>
-
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link text-grey-neutral-60 mx-3"
-            id="tab-amigos"
-            data-bs-toggle="tab"
-            data-bs-target="#tab-pane-amigos"
-            type="button"
-            role="tab"
-            aria-controls="tab-pane-amigos"
-            aria-selected="false"
-          >
-            Mis mejores amigos
-          </button>
+            {{ tab.label }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -101,6 +43,7 @@
 
 <script setup>
 defineOptions({ name: "NavBar" });
+import { navBarTabs } from "../../src/helpers/navBarTabs";
 </script>
 
 <style scoped></style>
