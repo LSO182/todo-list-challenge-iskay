@@ -1,24 +1,21 @@
 <template>
-  <h1 class="title-custom-padding fs-4-custom text-grey-neutral-60 fw-bold mb-0">
+  <h1
+    class="title-custom-padding fs-4-custom text-grey-neutral-60 fw-bold mb-0"
+  >
     Mis tareas
   </h1>
 
-  <div
-    v-for="task in tasksList"
-    :key="task.id"
-    class="bg-white task-card custom-shadow p-3 d-flex align-items-center justify-content-between mb-3"
-  >
-    <div class="description">
-      <p class="mb-0 text-grey-neutral-60 fw-semibold">{{ task.title }}</p>
-      <p class="mb-0 text-extra-small text-grey-neutral-40">
-        Estado: {{ task.completed ? 'Completa' : 'Pendiente' }}
-      </p>
+  <div class="d-flex flex-column">
+    <div class="spinner-border text-center d-flex mx-auto text-grey-neutral-40" role="status" v-if="isLoading"></div>
+    <div v-else>
+      <TaskCard
+        v-for="task in tasksList"
+        :key="task.id"
+        :task="task"
+        @delete-task="deleteTask"
+      />
     </div>
-    <img
-      src="/src/assets/icon-trash.png"
-      alt="Garbage can icon"
-      @click="deleteTask(task.id)"
-    />
+    <button class="btn btn-primary mt-5">Añadir tarea</button>
   </div>
 </template>
 
@@ -26,7 +23,10 @@
 defineOptions({ name: "MyTask" });
 import { ref, onMounted } from "vue";
 
+import TaskCard from "../components/TaskCard.vue";
+
 const tasksList = ref([]);
+const isLoading = ref(true);
 
 onMounted(async () => {
   try {
@@ -35,19 +35,16 @@ onMounted(async () => {
     );
     if (!response.ok) throw new Error("error al cargar las tareas");
     tasksList.value = await response.json();
-    console.log(tasksList)
+    isLoading.value = false;
   } catch (error) {
     console.error(error);
+    isLoading.value = false;
   }
 });
 
 function deleteTask(id) {
+  isLoading.value = true;
   tasksList.value = tasksList.value.filter((task) => task.id !== id);
+  isLoading.value = false;
 }
 </script>
-
-<style scoped>
-.task-card {
-  border-radius: 4px;
-}
-</style>
