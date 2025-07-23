@@ -55,6 +55,7 @@ function deleteTask(id) {
 }
 
 function handleAddTask(task) {
+  isLoading.value = true;
   const randomId = Math.ceil(Math.random() * 10000);
   tasksList.value.push({
     id: randomId,
@@ -62,5 +63,6 @@ function handleAddTask(task) {
     description: task.description,
     completed: false,
   });
+  isLoading.value = false;
 }
 </script>

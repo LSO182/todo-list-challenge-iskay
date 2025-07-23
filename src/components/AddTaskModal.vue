@@ -1,12 +1,4 @@
 <template>
-  <button
-    class="btn btn-primary mt-5"
-    type="button"
-    data-bs-toggle="modal"
-    data-bs-target="#taskModal"
-  >
-    Añadir tarea
-  </button>
   <div
     class="modal fade"
     id="taskModal"
@@ -75,13 +67,21 @@
       </div>
     </div>
   </div>
+
+  <button
+    class="btn btn-primary mt-5"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#taskModal"
+  >
+    Añadir tarea
+  </button>
 </template>
 
 <script setup>
 import { ref } from "vue";
 
 import { Modal } from "bootstrap";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 defineOptions({ name: "AddTaskModal" });
 
@@ -99,11 +99,19 @@ function submitTask() {
   name.value = "";
   description.value = "";
 
+  document.activeElement?.blur();
+
   const modalEl = document.getElementById("taskModal");
   if (modalEl) {
     const modalInstance = Modal.getInstance(modalEl) || new Modal(modalEl);
     modalInstance.hide();
   }
+
+  setTimeout(() => {
+    document.body.classList.remove("modal-open");
+    const backdrops = document.querySelectorAll(".modal-backdrop");
+    backdrops.forEach((bd) => bd.remove());
+  }, 300);
 }
 </script>
 
