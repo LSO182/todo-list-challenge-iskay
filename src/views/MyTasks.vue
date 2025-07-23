@@ -57,12 +57,22 @@ const currentPage = ref(1);
 const tasksCardsPerPage = 3;
 
 onMounted(async () => {
+  const sesionStoredTasks = sessionStorage.getItem("myTasks");
+
+  if (sesionStoredTasks) {
+    tasksList.value = JSON.parse(sesionStoredTasks);
+    isLoading.value = false;
+    return;
+  }
+
   try {
     const response = await fetch(
       "https://jsonplaceholder.typicode.com/todos?_limit=20"
     );
     if (!response.ok) throw new Error("error al cargar las tareas");
-    tasksList.value = await response.json();
+    const tasksListResponse = await response.json();
+    tasksList.value = tasksListResponse;
+    sessionStorage.setItem("myTasks", JSON.stringify(tasksListResponse));
     isLoading.value = false;
   } catch (error) {
     console.error(error);
@@ -75,6 +85,7 @@ function deleteTask(id) {
   if (paginatedTasks.value.length === 0 && currentPage.value > 1) {
     currentPage.value--;
   }
+  updateSessionStorage();
 }
 
 function handleAddTask(task) {
@@ -86,6 +97,7 @@ function handleAddTask(task) {
     completed: false,
   });
   currentPage.value = 1;
+  updateSessionStorage();
 }
 
 const totalPages = computed(() =>
@@ -97,4 +109,8 @@ const paginatedTasks = computed(() => {
   const end = start + tasksCardsPerPage;
   return tasksList.value.slice(start, end);
 });
+
+function updateSessionStorage() {
+  sessionStorage.setItem("myTasks", JSON.stringify(tasksList.value));
+}
 </script>

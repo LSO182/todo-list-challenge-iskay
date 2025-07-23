@@ -41,4 +41,9 @@ const props = defineProps({
 .modal-content {
   border-radius: 5px;
 }
+.description {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: calc(100% - 40px);
+}
 </style>
