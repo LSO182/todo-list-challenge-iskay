@@ -4,6 +4,7 @@
   /** colors **/
   --primary-green: #639605;
   --grey-neutral-10: #dbdbdb;
+  --grey-neutral-20: #b3b3b3;
   --grey-neutral-60: #555555;
 }
 
@@ -11,56 +12,66 @@
 
 .bg-primary-grey {
   background-color: var(--bg-primary-grey);
+  height: 100vh;
+}
+
+.custom-shadow {
+  box-shadow: 0px 1px 4px 1px #0000001f;
+}
+
+.mb-40 {
+  margin-bottom: 2.5rem;
 }
 
 .text-grey-neutral-60 {
   color: var(--grey-neutral-60);
 }
 
+.title-custom-padding {
+  padding-bottom: 20px;
+  padding-top: 38px;
+}
+
+/** sizing **/
 .fs-4-custom {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
-/** nav-tabs **/
-
-.nav-bar-menu-container {
-  border-bottom: 1px solid var(--grey-neutral-10);
-  min-height: 62px;
+.text-small {
+  font-size: 0.875rem;
 }
 
-.nav-tabs-container {
-  min-height: 50px;
+/** inputs **/
+
+.custom-placeholder::placeholder {
+  color: var(--grey-neutral-20);
+  font-size: 0.875rem;
 }
 
-.nav-tabs {
-  border-bottom: none;
+.form-control {
+  padding: 0.375rem 1.125rem;
 }
 
-.nav-link:hover {
-  color: var(--grey-neutral-60);
-}
+/** buttons **/
 
-.nav-tabs .nav-link {
-  border: transparent;
-  flex-shrink: 0;
-  min-width: 118px;
-
-  white-space: nowrap;
-}
-
-.nav-tabs .nav-link {
-  border-bottom: 4px solid transparent;
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--primary-green);
+  --bs-btn-border-color: var(--primary-green);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--primary-green);
+  --bs-btn-hover-border-color: var(--primary-green);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--primary-green);
+  --bs-btn-active-border-color: var(--primary-green);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--primary-green);
+  --bs-btn-disabled-border-color: var(--primary-green);
+  border-radius: 5px;
   font-weight: 600;
 }
 
-.nav-tabs .nav-link.active {
-  border: transparent;
-  border-bottom: 4px solid var(--primary-green);
-  color: var(--primary-green);
-  font-weight: 700;
-}
-
-.home-container {
-  padding-bottom: 20px;
-  padding-top: 38px;
+.btn-primary:hover {
+  background-color: var(--primary-green);
+  opacity: 0.9;
 }

@@ -16,7 +16,7 @@
     </div>
 
     <div
-      class="d-flex align-items-center overflow-x-auto overflow-y-hidden shadow-sm"
+      class="d-flex align-items-center overflow-x-auto overflow-y-hidden custom-shadow"
     >
       <ul class="nav nav-tabs d-flex flex-nowrap flex-md-wrap" role="tablist">
         <li
@@ -46,4 +46,41 @@ defineOptions({ name: "NavBar" });
 import { navBarTabs } from "../../src/helpers/navBarTabs";
 </script>
 
-<style scoped></style>
+<style scoped>
+.nav-bar-menu-container {
+  border-bottom: 1px solid var(--grey-neutral-10);
+  min-height: 62px;
+}
+
+.nav-tabs-container {
+  min-height: 50px;
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-link:hover {
+  color: var(--grey-neutral-60);
+}
+
+.nav-tabs .nav-link {
+  border: transparent;
+  flex-shrink: 0;
+  min-width: 118px;
+
+  white-space: nowrap;
+}
+
+.nav-tabs .nav-link {
+  border-bottom: 4px solid transparent;
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link.active {
+  border: transparent;
+  border-bottom: 4px solid var(--primary-green);
+  color: var(--primary-green);
+  font-weight: 700;
+}
+</style>

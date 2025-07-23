@@ -1,5 +1,5 @@
 <template>
-  <h1 class="fs-4-custom text-grey-neutral-60 fw-bold mb-0">Mis tareas</h1>
+  <h1 class="title-custom-padding fs-4-custom text-grey-neutral-60 fw-bold mb-0">Mis tareas</h1>
 </template>
 
 <script>
