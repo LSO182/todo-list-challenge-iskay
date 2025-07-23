@@ -11,22 +11,41 @@
       role="status"
       v-if="isLoading"
     ></div>
+
     <div v-else>
       <TaskCard
-        v-for="task in tasksList"
+        v-for="task in paginatedTasks"
         :key="task.id"
         :task="task"
         @delete-task="deleteTask"
       />
+      <div class="d-flex justify-content-center mt-3">
+        <button
+          class="btn btn-outline-secondary me-2"
+          :disabled="currentPage === 1"
+          @click="currentPage--"
+        >
+          Anterior
+        </button>
+        <span class="align-self-center">
+          {{ currentPage }} / {{ totalPages }}</span
+        >
+        <button
+          class="btn btn-outline-secondary ms-2"
+          :disabled="currentPage === totalPages"
+          @click="currentPage++"
+        >
+          Siguiente
+        </button>
+      </div>
     </div>
 
-    <AddTaskModal @add-task="handleAddTask"/>
+    <AddTaskModal @add-task="handleAddTask" />
   </div>
 </template>
 
 <script setup>
-defineOptions({ name: "MyTask" });
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 import TaskCard from "../components/TaskCard.vue";
 import AddTaskModal from "../components/AddTaskModal.vue";
@@ -34,10 +53,13 @@ import AddTaskModal from "../components/AddTaskModal.vue";
 const tasksList = ref([]);
 const isLoading = ref(true);
 
+const currentPage = ref(1);
+const tasksCardsPerPage = 3;
+
 onMounted(async () => {
   try {
     const response = await fetch(
-      "https://jsonplaceholder.typicode.com/todos?_limit=3"
+      "https://jsonplaceholder.typicode.com/todos?_limit=20"
     );
     if (!response.ok) throw new Error("error al cargar las tareas");
     tasksList.value = await response.json();
@@ -49,20 +71,30 @@ onMounted(async () => {
 });
 
 function deleteTask(id) {
-  isLoading.value = true;
   tasksList.value = tasksList.value.filter((task) => task.id !== id);
-  isLoading.value = false;
+  if (paginatedTasks.value.length === 0 && currentPage.value > 1) {
+    currentPage.value--;
+  }
 }
 
 function handleAddTask(task) {
-  isLoading.value = true;
   const randomId = Math.ceil(Math.random() * 10000);
-  tasksList.value.push({
+  tasksList.value.unshift({
     id: randomId,
     title: task.name,
     description: task.description,
     completed: false,
   });
-  isLoading.value = false;
+  currentPage.value = 1;
 }
+
+const totalPages = computed(() =>
+  Math.ceil(tasksList.value.length / tasksCardsPerPage)
+);
+
+const paginatedTasks = computed(() => {
+  const start = (currentPage.value - 1) * tasksCardsPerPage;
+  const end = start + tasksCardsPerPage;
+  return tasksList.value.slice(start, end);
+});
 </script>

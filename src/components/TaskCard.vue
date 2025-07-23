@@ -5,8 +5,14 @@
   >
     <div class="description">
       <p class="mb-0 text-grey-neutral-60 fw-semibold">{{ task.title }}</p>
+      <p class="mb-0 text-grey-neutral-60 text-small" v-if="task.description">
+        {{ task.description }}
+      </p>
       <p class="mb-0 text-extra-small text-grey-neutral-40">
-        Estado: {{ task.completed ? 'Completa' : 'Pendiente' }}
+        Estado:
+        <span :class="task.completed ? 'text-success' : 'text-danger'">
+          {{ task.completed ? "Completa" : "Pendiente" }}
+        </span>
       </p>
     </div>
     <img
@@ -33,6 +39,6 @@ const props = defineProps({
   border-radius: 4px;
 }
 .modal-content {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 </style>
