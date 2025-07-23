@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar bg-white py-0">
-    <div class="nav-bar-menu-container d-flex align-items-center w-100">
+    <div class="nav-bar-menu-container d-flex align-items-center justify-content-center w-100">
       <div class="container mx-1">
         <div class="d-flex justify-content-between align-items-center">
           <img src="/src/assets/Menu.svg" alt="Menu logo" />
@@ -16,9 +16,9 @@
     </div>
 
     <div
-      class="d-flex align-items-center overflow-x-auto overflow-y-hidden custom-shadow"
+      class="d-flex mx-lg-auto align-items-center overflow-x-auto overflow-y-hidden custom-shadow nav-tabs-container"
     >
-      <ul class="nav nav-tabs d-flex flex-nowrap flex-md-wrap" role="tablist">
+      <ul class="nav nav-tabs d-flex flex-nowrap" role="tablist">
         <li
           v-for="tab in navBarTabs"
           :key="tab.id"
