@@ -6,7 +6,11 @@
   </h1>
 
   <div class="d-flex flex-column">
-    <div class="spinner-border text-center d-flex mx-auto text-grey-neutral-40" role="status" v-if="isLoading"></div>
+    <div
+      class="spinner-border text-center d-flex mx-auto text-grey-neutral-40"
+      role="status"
+      v-if="isLoading"
+    ></div>
     <div v-else>
       <TaskCard
         v-for="task in tasksList"
@@ -15,7 +19,8 @@
         @delete-task="deleteTask"
       />
     </div>
-    <button class="btn btn-primary mt-5">Añadir tarea</button>
+
+    <AddTaskModal @add-task="handleAddTask"/>
   </div>
 </template>
 
@@ -24,6 +29,7 @@ defineOptions({ name: "MyTask" });
 import { ref, onMounted } from "vue";
 
 import TaskCard from "../components/TaskCard.vue";
+import AddTaskModal from "../components/AddTaskModal.vue";
 
 const tasksList = ref([]);
 const isLoading = ref(true);
@@ -46,5 +52,15 @@ function deleteTask(id) {
   isLoading.value = true;
   tasksList.value = tasksList.value.filter((task) => task.id !== id);
   isLoading.value = false;
+}
+
+function handleAddTask(task) {
+  const randomId = Math.ceil(Math.random() * 10000);
+  tasksList.value.push({
+    id: randomId,
+    title: task.name,
+    description: task.description,
+    completed: false,
+  });
 }
 </script>

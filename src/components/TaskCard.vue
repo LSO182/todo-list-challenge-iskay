@@ -1,6 +1,7 @@
 <template>
   <div
     class="bg-white task-card custom-shadow p-3 d-flex align-items-center justify-content-between mb-3"
+    :id="task.id"
   >
     <div class="description">
       <p class="mb-0 text-grey-neutral-60 fw-semibold">{{ task.title }}</p>
@@ -30,5 +31,8 @@ const props = defineProps({
 <style scoped>
 .task-card {
   border-radius: 4px;
+}
+.modal-content {
+    border-radius: 5px;
 }
 </style>
