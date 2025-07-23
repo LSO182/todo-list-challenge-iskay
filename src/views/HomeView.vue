@@ -1,12 +1,12 @@
 <template>
   <NavBar />
-  <div class="bg-primary-grey">
+  <main class="bg-primary-grey">
     <div class="container">
       <div class="mx-1">
         <router-view />
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>

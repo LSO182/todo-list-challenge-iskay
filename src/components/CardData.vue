@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white d-flex flex-column custom-shadow card-data px-3">
+  <form class="bg-white d-flex flex-column custom-shadow card-data px-3">
     <div class="mb-4">
       <label
         for="my-data-name"
@@ -40,7 +40,7 @@
       />
     </div>
     <button class="btn btn-primary">Guardar</button>
-  </div>
+  </form>
 </template>
 
 <script setup>

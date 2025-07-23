@@ -1,11 +1,21 @@
 :root {
   /** background colors **/
+
   --bg-primary-grey: #f4f4f4;
+
   /** colors **/
   --primary-green: #639605;
   --grey-neutral-10: #dbdbdb;
   --grey-neutral-20: #b3b3b3;
+  --grey-neutral-40: #777777;
   --grey-neutral-60: #555555;
+
+  /** font families **/
+  --font-primary: 'Nunito', sans-serif;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
 }
 
 /** helpers **/
@@ -21,6 +31,10 @@
 
 .mb-40 {
   margin-bottom: 2.5rem;
+}
+
+.text-grey-neutral-40 {
+  color: var(--grey-neutral-60);
 }
 
 .text-grey-neutral-60 {
@@ -39,6 +53,10 @@
 
 .text-small {
   font-size: 0.875rem;
+}
+
+.text-extra-small {
+  font-size: 0.75rem;
 }
 
 /** inputs **/
